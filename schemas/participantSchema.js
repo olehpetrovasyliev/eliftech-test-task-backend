@@ -1,10 +1,10 @@
 const Joi = require("joi");
 
 const participantSchema = Joi.object({
-  fullName: Joi.string().min(3).max(100).required(),
+  name: Joi.string().min(3).max(100).required(),
   email: Joi.string().email().required(),
-  dateOfBirth: Joi.date().iso().required(),
-  heardAboutUs: Joi.string()
+  date_of_birth: Joi.date().required(),
+  heard_about_us: Joi.string()
     .valid("Social Media", "Friend", "Advertisement")
     .required(),
 });

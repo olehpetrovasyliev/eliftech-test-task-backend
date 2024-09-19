@@ -1,3 +1,3 @@
-const participantSchema = "./participantSchema";
+const { participantSchema } = require("./participantSchema");
 
 module.exports = { participantSchema };

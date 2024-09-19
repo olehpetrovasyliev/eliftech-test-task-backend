@@ -43,7 +43,7 @@ const getEventById = async (req, res, next) => {
 const addParticipant = async (req, res, next) => {
   try {
     const { id } = req.params;
-    const { fullName, email, dateOfBirth, heardAboutUs } = req.body;
+    const { name, email, date_of_birth, heard_about_us } = req.body;
 
     const event = await Event.findById(id);
     if (!event) {
@@ -51,10 +51,10 @@ const addParticipant = async (req, res, next) => {
     }
 
     const newParticipant = {
-      name: fullName,
-      email: email,
-      date_of_birth: new Date(dateOfBirth),
-      heard_about_us: heardAboutUs,
+      name,
+      email,
+      date_of_birth,
+      heard_about_us,
     };
 
     event.participants.push(newParticipant);
