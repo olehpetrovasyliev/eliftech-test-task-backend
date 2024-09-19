@@ -1,3 +1,7 @@
+# Test task for Eliftech - backend
+
+This repository contains the backend for an Event Management application. It serves as a test task to demonstrate the ability to manage events and participants through a set of RESTful APIs.
+
 ## Table of Contents
 
 - [Features](#features)
