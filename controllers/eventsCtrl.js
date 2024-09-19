@@ -11,7 +11,12 @@ const getAllEvents = async (req, res, next) => {
 
   const result = await Event.find(
     {},
-    { "-createdAt": 0, "-updatedAt": 0, "-participants": 0 }
+    {
+      createdAt: false,
+      updatedAt: false,
+      participants: false,
+      versionKey: false,
+    }
   )
     .limit(Number(limit))
     .skip((page - 1) * limit)
@@ -22,8 +27,9 @@ const getAllEvents = async (req, res, next) => {
 const getEventById = async (req, res, next) => {
   const { id } = req.params;
   const result = await Event.findById(id, {
-    createdAt: 0,
-    updatedAt: 0,
+    createdAt: false,
+    updatedAt: false,
+    versionKey: false,
   });
   if (!result) {
     throw HttpError(404, `Event with id ${id} not found`);
