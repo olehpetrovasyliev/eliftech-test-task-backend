@@ -13,7 +13,7 @@ app.use(express.json());
 app.use("/api/events", eventsRouter);
 
 app.use((req, res) => {
-  res.status(404).json("Not found");
+  res.status(404).json("Route not found");
 });
 app.use((err, req, res, next) => {
   const { status = 500, message = "Server error" } = err;

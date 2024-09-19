@@ -40,7 +40,38 @@ const getEventById = async (req, res, next) => {
   res.json(modifiedEvent);
 };
 
+const addParticipant = async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const { fullName, email, dateOfBirth, heardAboutUs } = req.body;
+
+    const event = await Event.findById(id);
+    if (!event) {
+      throw HttpError(404, `Event with id ${id} not found`);
+    }
+
+    const newParticipant = {
+      name: fullName,
+      email: email,
+      date_of_birth: new Date(dateOfBirth),
+      heard_about_us: heardAboutUs,
+    };
+
+    event.participants.push(newParticipant);
+
+    await event.save();
+
+    res.status(201).json({
+      message: "Participant added successfully",
+      participant: newParticipant,
+    });
+  } catch (error) {
+    next(error);
+  }
+};
+
 module.exports = {
   getAllEvents: ctrlWrapper(getAllEvents),
   getEventById: ctrlWrapper(getEventById),
+  addParticipant: ctrlWrapper(addParticipant),
 };
