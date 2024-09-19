@@ -57,6 +57,10 @@ npm install
 
 If you cannot or don't want to clone project on your local machine, i`ve deployed it on Render.com by LINK
 
+#### Warning
+
+This is deployed on free version, so it can download realy slow
+
 ## API Endpoints
 
 ### Events
