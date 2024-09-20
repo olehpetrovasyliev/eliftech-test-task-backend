@@ -8,6 +8,7 @@ const getAllEvents = async (req, res, next) => {
   const sortDirection = req.query.sortDirection === "desc" ? -1 : 1;
 
   const sortOptions = { [sortBy]: sortDirection };
+  const totalCount = await Event.countDocuments();
 
   const result = await Event.find(
     {},
@@ -21,7 +22,12 @@ const getAllEvents = async (req, res, next) => {
     .limit(Number(limit))
     .skip((page - 1) * limit)
     .sort(sortOptions);
-  res.json({ page, limit, total_pages: result / limit, results: result });
+  res.json({
+    page,
+    perPage: limit,
+    totalPages: Math.ceil(totalCount / limit),
+    results: result,
+  });
 };
 
 const getEventById = async (req, res, next) => {
