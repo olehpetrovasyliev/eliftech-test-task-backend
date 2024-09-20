@@ -21,7 +21,7 @@ const getAllEvents = async (req, res, next) => {
     .limit(Number(limit))
     .skip((page - 1) * limit)
     .sort(sortOptions);
-  res.json(result);
+  res.json({ page, limit, total_pages: result / limit, results: result });
 };
 
 const getEventById = async (req, res, next) => {
