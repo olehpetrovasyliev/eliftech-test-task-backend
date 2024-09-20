@@ -4,7 +4,7 @@ const { ctrlWrapper } = require("../helpers");
 const getAllEvents = async (req, res, next) => {
   const page = Number(req.query.page) || 1;
   const limit = Number(req.query.limit) || 10;
-  const sortBy = req.query.sortBy || "eventDate";
+  const sortBy = req.query.sortBy || "event_date";
   const sortDirection = req.query.sortDirection === "desc" ? -1 : 1;
 
   const sortOptions = { [sortBy]: sortDirection };
