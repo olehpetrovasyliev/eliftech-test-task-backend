@@ -70,7 +70,7 @@ This is deployed on free version, so it can download realy slow
 
 ### Participants
 
-- GET /api/events/:id/participants - Fetch all participants for a specific event
+- Post /api/events/:id/participants - Add neew participant to existing event
 
 ### Middleware
 
